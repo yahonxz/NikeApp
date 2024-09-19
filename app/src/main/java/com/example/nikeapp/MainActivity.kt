@@ -6,6 +6,7 @@ import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.horizontalScroll
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -21,7 +22,17 @@ import androidx.compose.foundation.layout.statusBarsPadding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.AddCircle
+import androidx.compose.material.icons.filled.Home
+import androidx.compose.material.icons.filled.MailOutline
+import androidx.compose.material.icons.filled.Notifications
+import androidx.compose.material.icons.filled.Person
+import androidx.compose.material.icons.sharp.AccountCircle
+import androidx.compose.material.icons.sharp.Check
+import androidx.compose.material.icons.sharp.FavoriteBorder
+import androidx.compose.material.icons.sharp.Home
 import androidx.compose.material.icons.sharp.Search
+import androidx.compose.material.icons.sharp.ShoppingCart
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Switch
@@ -51,12 +62,16 @@ class MainActivity : ComponentActivity() {
                 }
                 Spacer(modifier = Modifier.height(2.dp))
                 Column (modifier = Modifier.background(Color.White)
-                    .padding(top = 10.dp)){
+                    .padding(top = 5.dp)){
                     Colecciones()
                 }
                 Column (modifier = Modifier.background(Color.White)
-                    .padding(top = 10.dp)){
+                    .padding(top = 5.dp)){
                     Productos()
+                }
+                Column (modifier = Modifier.background(Color.White)
+                    .padding(top = 2.dp)){
+                    BarraHerramientas()
                 }
             }
 
@@ -69,7 +84,7 @@ class MainActivity : ComponentActivity() {
 fun SimpleSwitchWithLogos() {
     Row(
         modifier = Modifier
-            .padding(16.dp,7.dp)
+            .padding(16.dp,2.dp)
             .statusBarsPadding()
             .fillMaxWidth()
     ) {
@@ -177,7 +192,6 @@ fun Colecciones (){
     }
 }
 
-@Preview(showBackground = true)
 @Composable
 fun Productos () {
     Column (modifier = Modifier.
@@ -247,6 +261,56 @@ fun Productos () {
                     fontSize = 13.sp,
                     modifier = Modifier.padding(start = 4.dp, top = 8.dp))
             }
+        }
+    }
+}
+@Preview(showBackground = true)
+@Composable
+fun BarraHerramientas(){
+    Row (horizontalArrangement = Arrangement.spacedBy(28.dp),
+        modifier = Modifier
+            .padding(start = 20.dp, end = 10.dp, bottom = 10.dp)
+            .fillMaxWidth()
+    ){
+        Column {
+            Icon(Icons.Sharp.Home,
+                contentDescription = "Home Icon",
+                modifier = Modifier.padding(start = 3.dp)
+                    .clickable {  })
+            Text(text = "Inicio",
+                fontSize = 13.sp)
+        }
+        Column {
+            Icon(Icons.Sharp.Check,
+                contentDescription = "Comprar",
+                modifier = Modifier.padding(start = 11.dp)
+                    .clickable {  })
+            Text(text = "Comprar",
+                fontSize = 13.sp)
+        }
+        Column {
+            Icon(Icons.Sharp.FavoriteBorder,
+                contentDescription = "Favoritos",
+                modifier = Modifier.padding(start = 11.dp)
+                    .clickable {  })
+            Text(text = "Favoritos",
+                fontSize = 13.sp)
+        }
+        Column {
+            Icon(Icons.Sharp.ShoppingCart,
+                contentDescription = "Bolsa",
+                modifier = Modifier.padding(start = 4.dp)
+                    .clickable {  })
+            Text(text = "Bolsa",
+                fontSize = 13.sp)
+        }
+        Column {
+            Icon(Icons.Sharp.AccountCircle,
+                contentDescription = "Perfil",
+                modifier = Modifier.padding(start = 2.dp)
+                    .clickable {  })
+            Text(text = "Perfil",
+                fontSize = 13.sp)
         }
     }
 }
