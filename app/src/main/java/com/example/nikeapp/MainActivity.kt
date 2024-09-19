@@ -51,8 +51,12 @@ class MainActivity : ComponentActivity() {
                 }
                 Spacer(modifier = Modifier.height(2.dp))
                 Column (modifier = Modifier.background(Color.White)
-                    .padding(top = 15.dp)){
+                    .padding(top = 10.dp)){
                     Colecciones()
+                }
+                Column (modifier = Modifier.background(Color.White)
+                    .padding(top = 10.dp)){
+                    Productos()
                 }
             }
 
@@ -65,7 +69,7 @@ class MainActivity : ComponentActivity() {
 fun SimpleSwitchWithLogos() {
     Row(
         modifier = Modifier
-            .padding(16.dp,14.dp)
+            .padding(16.dp,7.dp)
             .statusBarsPadding()
             .fillMaxWidth()
     ) {
@@ -92,7 +96,7 @@ fun Titulo (){
     Column(
         modifier = Modifier
             .fillMaxWidth()
-            .padding(start = 16.dp, top = 6.dp, end = 16.dp)
+            .padding(start = 16.dp, top = 4.dp, end = 16.dp)
     ) {
         Text(
             text = "Comprar",
@@ -102,7 +106,7 @@ fun Titulo (){
 
         Row(
             horizontalArrangement = Arrangement.spacedBy(18.dp),
-            modifier = Modifier.padding(top = 22.dp)
+            modifier = Modifier.padding(top = 12.dp)
         ) {
             Column(
                 horizontalAlignment = Alignment.CenterHorizontally
@@ -125,7 +129,6 @@ fun Titulo (){
     }
 }
 
-@Preview(showBackground = true)
 @Composable
 fun Colecciones (){
     Column (modifier = Modifier.padding(16.dp, 11.dp)
@@ -167,6 +170,80 @@ fun Colecciones (){
                         .height(130.dp))
                 Text(text = "Consulta recompensas",
                     fontWeight = FontWeight.SemiBold,
+                    fontSize = 13.sp,
+                    modifier = Modifier.padding(start = 4.dp, top = 8.dp))
+            }
+        }
+    }
+}
+
+@Preview(showBackground = true)
+@Composable
+fun Productos () {
+    Column (modifier = Modifier.
+    fillMaxWidth().
+    padding(16.dp, 12.dp)){
+        Row {
+            Text(text = "Muy Retro, muy Nike: ",
+                fontSize = 16.sp,
+                fontWeight = FontWeight.SemiBold)
+            Text(text = "Ver todo",
+                fontWeight = FontWeight.SemiBold,
+                color = Color.Gray,
+                fontSize = 10.sp,
+                modifier = Modifier.padding(start = 130.dp, top = 3.dp))
+        }
+
+        Row (horizontalArrangement = Arrangement.spacedBy(7.dp),
+            modifier = Modifier.
+            horizontalScroll(rememberScrollState())
+                .fillMaxWidth())
+        {
+            Column {
+            Image(painter = painterResource(R.drawable.cortez),
+                contentDescription = "Nike cortez",
+                contentScale = ContentScale.Crop,
+                modifier = Modifier.width(140.dp)
+                    .height(130.dp))
+            Text(text = "Nike Cortez Textile",
+                fontWeight = FontWeight.SemiBold,
+                fontSize = 13.sp,
+                modifier = Modifier.padding(start = 4.dp, top = 8.dp))
+                Text(text = "$2.099",
+                    fontWeight = FontWeight.SemiBold,
+                    color = Color.Gray,
+                    fontSize = 13.sp,
+                    modifier = Modifier.padding(start = 4.dp, top = 8.dp))
+            }
+            Column {
+                Image(painter = painterResource(R.drawable.vomero),
+                    contentDescription = "Nike vomero 5",
+                    contentScale = ContentScale.Crop,
+                    modifier = Modifier.width(140.dp)
+                        .height(130.dp))
+                Text(text = "Nike Zoom Vomero 5",
+                    fontWeight = FontWeight.SemiBold,
+                    fontSize = 13.sp,
+                    modifier = Modifier.padding(start = 4.dp, top = 8.dp))
+                Text(text = "$3.699",
+                    fontWeight = FontWeight.SemiBold,
+                    color = Color.Gray,
+                    fontSize = 13.sp,
+                    modifier = Modifier.padding(start = 4.dp, top = 8.dp))
+            }
+            Column {
+                Image(painter = painterResource(R.drawable.tr1),
+                    contentDescription = "Nike Zoom TR 1",
+                    contentScale = ContentScale.Crop,
+                    modifier = Modifier.width(140.dp)
+                        .height(130.dp))
+                Text(text = "Nike Zoom TR 1",
+                    fontWeight = FontWeight.SemiBold,
+                    fontSize = 13.sp,
+                    modifier = Modifier.padding(start = 4.dp, top = 8.dp))
+                Text(text = "$2.999",
+                    fontWeight = FontWeight.SemiBold,
+                    color = Color.Gray,
                     fontSize = 13.sp,
                     modifier = Modifier.padding(start = 4.dp, top = 8.dp))
             }
