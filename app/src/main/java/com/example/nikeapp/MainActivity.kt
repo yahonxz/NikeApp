@@ -6,6 +6,7 @@ import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.horizontalScroll
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -18,6 +19,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.statusBarsPadding
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.rememberScrollState
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.sharp.Search
 import androidx.compose.material3.Icon
@@ -48,6 +50,10 @@ class MainActivity : ComponentActivity() {
                     Titulo()
                 }
                 Spacer(modifier = Modifier.height(2.dp))
+                Column (modifier = Modifier.background(Color.White)
+                    .padding(top = 15.dp)){
+                    Colecciones()
+                }
             }
 
         }
@@ -59,7 +65,7 @@ class MainActivity : ComponentActivity() {
 fun SimpleSwitchWithLogos() {
     Row(
         modifier = Modifier
-            .padding(16.dp)
+            .padding(16.dp,14.dp)
             .statusBarsPadding()
             .fillMaxWidth()
     ) {
@@ -80,7 +86,7 @@ fun SimpleSwitchWithLogos() {
             modifier = Modifier.padding(start = 250.dp, bottom = 15.dp))
     }
 }
-@Preview(showBackground = true)
+
 @Composable
 fun Titulo (){
     Column(
@@ -108,7 +114,7 @@ fun Titulo (){
                 Box(
                     modifier = Modifier
                         .width(60.dp) // Ajustamos el ancho de la línea al texto
-                        .height(2.dp)
+                        .height(1.dp)
                         .background(Color.Black)
                 )
             }
@@ -117,5 +123,53 @@ fun Titulo (){
             Text(text = "Niño/a")
         }
     }
+}
 
+@Preview(showBackground = true)
+@Composable
+fun Colecciones (){
+    Column (modifier = Modifier.padding(16.dp, 11.dp)
+            .fillMaxWidth()){
+        Text(text = "Comprar por colección Hombre",
+            fontSize = 16.sp,
+            fontWeight = FontWeight.SemiBold,
+            modifier = Modifier.padding(bottom = 12.dp))
+        Row (horizontalArrangement = Arrangement.spacedBy(7.dp),
+            modifier = Modifier.
+            horizontalScroll(rememberScrollState())
+            .fillMaxWidth()){
+            Column {
+                Image(painter = painterResource(R.drawable.descuento),
+                    contentDescription = "Imagen descuento",
+                    contentScale = ContentScale.Crop,
+                    modifier = Modifier.width(140.dp)
+                        .height(130.dp))
+                Text(text = "¡Solo por 72 horas!",
+                    fontWeight = FontWeight.SemiBold,
+                    modifier = Modifier.padding(start = 4.dp, top = 8.dp))
+            }
+            Column {
+                Image(painter = painterResource(R.drawable.correr),
+                    contentDescription = "Imagen descuento",
+                    contentScale = ContentScale.Crop,
+                    modifier = Modifier.width(140.dp)
+                        .height(130.dp))
+                Text(text = "Lanzamientos para correr",
+                    fontWeight = FontWeight.SemiBold,
+                    fontSize = 11.sp,
+                    modifier = Modifier.padding(start = 4.dp, top = 8.dp))
+            }
+            Column {
+                Image(painter = painterResource(R.drawable.recompensas),
+                    contentDescription = "Imagen descuento",
+                    contentScale = ContentScale.Crop,
+                    modifier = Modifier.width(140.dp)
+                        .height(130.dp))
+                Text(text = "Consulta recompensas",
+                    fontWeight = FontWeight.SemiBold,
+                    fontSize = 13.sp,
+                    modifier = Modifier.padding(start = 4.dp, top = 8.dp))
+            }
+        }
+    }
 }
